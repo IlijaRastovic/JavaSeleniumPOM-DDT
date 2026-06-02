@@ -15,6 +15,9 @@ public class CheckoutPage {
     WebElement zipCodeField;
     WebElement cancelButton;
     WebElement continueButton;
+    WebElement checkoutErrorMsg;
+    String actualURL;
+
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
@@ -38,6 +41,14 @@ public class CheckoutPage {
 
     public WebElement getContinueButton() {
         return driver.findElement(By.id("continue"));
+    }
+
+    public WebElement getCheckoutErrorMsg() {
+        return driver.findElement(By.cssSelector("h3[data-test='error'"));
+    }
+
+    public String getActualURL() {
+        return driver.getCurrentUrl();
     }
 
     //------------------------------------------------------------

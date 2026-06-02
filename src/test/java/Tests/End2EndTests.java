@@ -54,10 +54,40 @@ public class End2EndTests extends BaseTest {
     }
 
     @Test (priority=2)
-    public void
+    public void emptyCheckoutFormErrorMessageShownTest(){
+        int usernameColumn = 0;
+        int passwordColumn = 1;
+        loginPage.enterValidUsername(excelHelper.loadValues("Sheet1", usernameColumn));
+        loginPage.enterValidPassword(excelHelper.loadSingleValue("Sheet1", 1, passwordColumn));
+        loginPage.clickLoginButton();
+        itemPage.clickOnAddToCartButton();
+        itemPage.clickOnCartIcon();
+        cartPage.clickCheckoutButton();
+        checkoutPage.clickContinueButton();
+        Assert.assertTrue(checkoutPage.getCheckoutErrorMsg().isDisplayed());
+        Assert.assertEquals(checkoutPage.getActualURL(), driver.getCurrentUrl());
+        Assert.assertTrue(checkoutPage.getFirstNameField().isDisplayed());
+        Assert.assertTrue(checkoutPage.getLastNameField().isDisplayed());
+        Assert.assertTrue(checkoutPage.getZipCodeField().isDisplayed());
+        Assert.assertTrue(checkoutPage.getCancelButton().isDisplayed());
+
+    }
 
 
+    @Test (priority=3)
+    public void cancelCheckoutTest(){
 
+    }
+
+    @Test (priority=4)
+    public void E2EWithRemoveItemFromCartTest(){ // Assert that item is removed
+
+    }
+
+    @Test (priority=5)
+    public void LogOutTest(){
+
+    }
 
 
 
