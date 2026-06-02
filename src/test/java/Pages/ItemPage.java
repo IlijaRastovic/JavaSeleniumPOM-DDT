@@ -46,7 +46,7 @@ public class ItemPage {
     }
 
     public WebElement getItemAddToCart() {
-        return driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        return driver.findElement(By.id("add-to-cart-sauce-labs-backpack")); //Every item has its own add to cart button, i will later get all the buttons with a list
     }
 
     public WebElement getBurgerMenu() {
@@ -117,6 +117,10 @@ public class ItemPage {
 
     public void clickOnAddToCartButton(){
         getItemAddToCart().click();
+    }
+
+    public void clickOnCartIcon(){
+        getCart().click();
     }
 
 

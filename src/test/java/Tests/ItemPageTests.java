@@ -59,7 +59,7 @@ public class ItemPageTests extends BaseTest {
     }
 
     @Test(priority = 4)
-    public void cartIconBadgeShownTest() {
+    public void cartIconBadgeIsShownTest() {
         loginPage.userLogin();
         itemPage.clickOnAddToCartButton();
         Assert.assertTrue(itemPage.getCartBadge().isDisplayed());
@@ -74,7 +74,7 @@ public class ItemPageTests extends BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 
 

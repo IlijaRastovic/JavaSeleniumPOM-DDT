@@ -48,7 +48,7 @@ public class LoginPage {
 
     //-----------------------------------------------------
 
-    public void userLogin() {
+    public void userLogin() { // Later will add method using cookies
         clearFields();
         getUsernameField().sendKeys("standard_user");
         getPasswordField().sendKeys("secret_sauce");

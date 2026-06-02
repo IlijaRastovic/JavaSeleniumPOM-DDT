@@ -1,7 +1,6 @@
 package Base;
 
-import Pages.ItemPage;
-import Pages.LoginPage;
+import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,6 +20,11 @@ public class BaseTest {
     public ExcelHelper  excelHelper;
     public LoginPage loginPage;
     public ItemPage itemPage;
+    public CartPage cartPage;
+    public CheckoutPage checkoutPage;
+    public CheckoutOverviewPage  checkoutOverviewPage;
+    public CompletePage completePage;
+
 
 
     @BeforeClass
