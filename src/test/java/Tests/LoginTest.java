@@ -25,6 +25,8 @@ public class LoginTest extends BaseTest {
         itemPage = new ItemPage(driver);
     }
 
+
+
     @Test(priority = 1)
     public void loginWithValidCredentialsTest() {
         int usernameColumn = 0;
@@ -35,12 +37,8 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(itemPage.getActualUrl(), driver.getCurrentUrl());
         Assert.assertTrue(itemPage.getTitle().isDisplayed());
         Assert.assertTrue(itemPage.getCart().isDisplayed());
-        Assert.assertTrue(itemPage.getItemPrice().isDisplayed());
-       /* for (WebElement img : itemPage.getItemsImg()) {
-            System.out.println(img.getAttribute("data-test"));
-       }
-        System.out.println(itemPage.getItemsImg().size());   // Ovo ide u page klasu - metodu kasnije
-*/
+        Assert.assertFalse(itemPage.getItemPrice().isEmpty());
+
     }
 
     @Test(priority = 2)
@@ -114,6 +112,8 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginPage.getPasswordField().isDisplayed());
         Assert.assertEquals(itemPage.getActualUrl(), driver.getCurrentUrl());
     }
+
+
 
 
     @AfterMethod

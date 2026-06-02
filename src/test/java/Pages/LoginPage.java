@@ -48,6 +48,13 @@ public class LoginPage {
 
     //-----------------------------------------------------
 
+    public void userLogin() {
+        clearFields();
+        getUsernameField().sendKeys("standard_user");
+        getPasswordField().sendKeys("secret_sauce");
+        getLoginButton().click();
+    }
+
     public void enterValidUsername(List<String> loadValues) {
         getUsernameField().clear();
         for (String username : loadValues) {
