@@ -3,6 +3,8 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 import java.util.List;
@@ -17,6 +19,9 @@ public class CheckoutPage {
     WebElement continueButton;
     WebElement checkoutErrorMsg;
     String actualURL;
+    List<WebElement> itemList;
+
+
 
 
     public CheckoutPage(WebDriver driver) {
@@ -51,6 +56,12 @@ public class CheckoutPage {
         return driver.getCurrentUrl();
     }
 
+    public List<WebElement> getItemList() {
+        return driver.findElements(By.className("cart_item"));
+    }
+
+
+
     //------------------------------------------------------------
 
     public void enterFirstName(List<String> loadValues){
@@ -73,4 +84,6 @@ public class CheckoutPage {
     public void clickContinueButton(){
         getContinueButton().click();
     }
+
+
 }

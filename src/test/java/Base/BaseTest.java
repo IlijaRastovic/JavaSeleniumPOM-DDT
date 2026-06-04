@@ -27,6 +27,7 @@ public class BaseTest {
 
 
 
+
     @BeforeClass
     public void setUp() throws IOException {
         WebDriverManager.firefoxdriver().setup();

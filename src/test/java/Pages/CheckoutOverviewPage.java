@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CheckoutOverviewPage {
 
     WebDriver driver;
@@ -12,6 +15,8 @@ public class CheckoutOverviewPage {
     WebElement item;
     WebElement cartQuantity;
     WebElement itemPrice;
+    List<String> listOfCheckoutItemsTitles;
+    List<WebElement> itemList;
 
     public CheckoutOverviewPage(WebDriver driver) {
         this.driver = driver;
@@ -37,9 +42,29 @@ public class CheckoutOverviewPage {
         return driver.findElement(By.className("inventory_item_price"));
     }
 
+    public List<WebElement> getItemList() {
+        return driver.findElements(By.className("cart_item"));
+    }
+
+    public List<String> getListOfCheckoutItemsTitles() {
+        List<String> titles = new ArrayList<>();
+
+        for (WebElement item : getItemList()) {
+            String title = item.findElement(By.className("inventory_item_name")).getText();
+            titles.add(title);
+        }
+        System.out.println(titles);
+
+        return titles;
+    }
+
     //-----------------------------------------------------------------
 
     public void clickFinishButton() {
         getFinishButton().click();
+    }
+
+    public void clickCancelButton() {
+        getCancelButton().click();
     }
 }

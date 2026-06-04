@@ -3,15 +3,20 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class ItemPage {
+
     WebDriver driver;
+    WebDriverWait wait;
     String actualUrl;
     WebElement cart;
     WebElement title;
@@ -23,6 +28,7 @@ public class ItemPage {
     List<WebElement> itemPicture;
     List<WebElement> itemPrice;
     WebElement cartBadge;
+    List<WebElement> addToCartButtons;
 
 
     public ItemPage(WebDriver driver) {
@@ -73,6 +79,9 @@ public class ItemPage {
         return driver.findElement(By.className("shopping_cart_badge"));
     }
 
+    public List<WebElement> getAddToCartButtons() {
+        return driver.findElements(By.cssSelector("button[data-test^='add-to-cart']"));
+    }
     //-----------------------------------------------------------------------------------------------------
 
     public boolean checkIfAllItemsAreShown(){
@@ -121,6 +130,31 @@ public class ItemPage {
 
     public void clickOnCartIcon(){
         getCart().click();
+    }
+
+    public void checkAddToCartBtnListSize(){ // Helper method to check if locator is getting all  the buttons
+        System.out.println(getAddToCartButtons().size());
+    }
+
+    public void clickOnMultipleAddToCartButton(int quantity) throws IllegalAccessException {
+
+        List<WebElement> listOfButtons = getAddToCartButtons(); // Adding all the buttons in unique list before the for loop, because after the click, buttons changes its data-test atribute
+
+        if(quantity > listOfButtons.size()){
+            throw new IllegalAccessException("Size of the list is smaller then the passed number!");
+        }
+        for (int i=0;i<quantity;i++){
+            listOfButtons.get(i).click();
+        }
+    }
+
+    public void clickBurgerMenuButton(){
+        getBurgerMenu().click();
+    }
+
+    public void clickLogoutButton() throws InterruptedException {
+        Thread.sleep(300);
+        getBurgerLogout().click();
     }
 
 
