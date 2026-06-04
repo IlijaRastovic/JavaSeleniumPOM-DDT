@@ -28,7 +28,7 @@ public class ItemPageTests extends BaseTest {
 
 
     @Test(priority = 1)
-    public void allItemsShownTest() {
+    public void shouldShowAllInventoryItemsAfterLogin() {
         loginPage.userLogin();
         itemPage.checkIfAllItemsAreShown();
         Assert.assertEquals(itemPage.getActualUrl(), driver.getCurrentUrl());
@@ -38,7 +38,7 @@ public class ItemPageTests extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void allDifferentItemsShownTest() {
+    public void shouldDisplayOnlyUniqueItems() {
         loginPage.userLogin();
         Assert.assertTrue(itemPage.checkIfAllItemsShownAreDifferen(),"There are duplicate items on the page");
         Assert.assertEquals(itemPage.getActualUrl(), driver.getCurrentUrl());
@@ -47,7 +47,7 @@ public class ItemPageTests extends BaseTest {
     }
 
     @Test(priority = 3)
-    public void allFilerOptionsShownTest() {
+    public void shouldDisplayAllFilterOptionsInDropdown() {
         loginPage.userLogin();
         itemPage.checkIfAllFilterOptionsAreShown();
         itemPage.clickFilterDropDownMenu(); // optional
@@ -59,7 +59,7 @@ public class ItemPageTests extends BaseTest {
     }
 
     @Test(priority = 4)
-    public void cartIconBadgeIsShownTest() {
+    public void shouldShowCartBadgeAfterAddingItem() {
         loginPage.userLogin();
         itemPage.clickOnAddToCartButton();
         Assert.assertTrue(itemPage.getCartBadge().isDisplayed());

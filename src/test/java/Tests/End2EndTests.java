@@ -29,7 +29,7 @@ public class End2EndTests extends BaseTest {
     }
 
     @Test (priority=1)
-    public void E2ECompleteCheckoutTest() {
+    public void shouldCompleteCheckoutHappyPath() {
         int usernameColumn = 0;
         int passwordColumn = 1;
         int firstNameColumn = 2;
@@ -55,7 +55,7 @@ public class End2EndTests extends BaseTest {
     }
 
     @Test (priority=2)
-    public void emptyCheckoutFormErrorMessageShownTest(){
+    public void shouldShowErrorMessageWhenCheckoutFormIsEmpty(){
         int usernameColumn = 0;
         int passwordColumn = 1;
 
@@ -77,7 +77,7 @@ public class End2EndTests extends BaseTest {
 
 
     @Test (priority=3)
-    public void cancelCheckoutTest(){
+    public void shouldNavigateBackToInventoryOnCancelCheckout(){
         int firstNameColumn = 2;
         int lastNameColumn = 3;
         int zipCodeColumn = 4;
@@ -99,7 +99,7 @@ public class End2EndTests extends BaseTest {
     }
 
     @Test (priority=4)
-    public void E2EWithRemoveItemFromCartTest() throws InterruptedException, IllegalAccessException {
+    public void shouldCheckoutOnlyRemainingItemsAfterRemovingFromCart() throws InterruptedException, IllegalAccessException {
         int firstNameColumn = 2;
         int lastNameColumn = 3;
         int zipCodeColumn = 4;
@@ -129,7 +129,7 @@ public class End2EndTests extends BaseTest {
     }
 
     @Test (priority=5)
-    public void LogOutTest() throws InterruptedException {
+    public void shouldReturnToLoginPageAfterLogout() throws InterruptedException {
         loginPage.userLogin();
         itemPage.clickBurgerMenuButton();
         itemPage.clickLogoutButton();

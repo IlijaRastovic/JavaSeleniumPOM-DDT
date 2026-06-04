@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
 
 
     @Test(priority = 1)
-    public void loginWithValidCredentialsTest() {
+    public void shouldLoginWithValidCredentials() {
         int usernameColumn = 0;
         int passwordColumn = 1;
         loginPage.enterValidUsername(excelHelper.loadValues("Sheet1", usernameColumn));
@@ -42,7 +42,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void emptyFieldsTest() {
+    public void shouldShowErrorMessageWhenFieldsAreEmpty() {
         loginPage.clearFields();
         loginPage.clickLoginButton();
         Assert.assertTrue(loginPage.getErrorMessage().isDisplayed());
@@ -53,7 +53,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 3)
-    public void emptyUsenameFieldTest() {
+    public void shouldShowErrorMessageWhenUsernameFieldIsEmpty() {
         int passwordColumn = 1;
         loginPage.clearFields();
         loginPage.enterValidPassword(excelHelper.loadSingleValue("Sheet1", 1, passwordColumn));
@@ -67,7 +67,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 4)
-    public void emptyPasswordFieldTest() {
+    public void shouldShowErrorMessageWhenPasswordFieldIsEmpty() {
         int usernameColumn = 0;
         loginPage.clearFields();
         loginPage.enterValidUsername(excelHelper.loadValues("Sheet1", usernameColumn));
@@ -81,7 +81,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 5)
-    public void loginWithLockedOutCredentialsTest() {
+    public void shouldShowErrorMessageWhenUserIsLockedOut() {
         int usernameColumn = 0;
         int passwordColumn = 1;
         loginPage.clearFields();
@@ -98,7 +98,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 6)
-    public void loginWithInvalidCredentialsTest() {
+    public void shouldShowErrorMessageWhenCredentialsAreInvalid() {
         int usernameColumn = 0;
         int passwordColumn = 1;
         loginPage.clearFields();
