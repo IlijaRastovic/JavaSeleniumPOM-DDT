@@ -1,4 +1,4 @@
-# Project Name
+# JavaSeleniumPOM-DDT
 
 This project focuses on automated testing of 
 the Login and Checkout functionalities of the SauceDemo web application.
