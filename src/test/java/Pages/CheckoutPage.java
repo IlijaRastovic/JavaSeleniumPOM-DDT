@@ -3,14 +3,12 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-
 import java.util.List;
 
 public class CheckoutPage {
 
+    // Keeping the track of what Web Elements we used
     WebDriver driver;
     WebElement firstNameField;
     WebElement lastNameField;
@@ -23,11 +21,11 @@ public class CheckoutPage {
 
 
 
-
+    // Initialize WebDriver instance for CheckoutPage
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
     }
-
+    // Locators for WebElements
     public WebElement getFirstNameField() {
         return driver.findElement(By.id("first-name"));
     }
@@ -64,6 +62,7 @@ public class CheckoutPage {
 
     //------------------------------------------------------------
 
+    // Methods that are used in tests
     public void enterFirstName(List<String> loadValues){
         getFirstNameField().clear();
         int randomIndex = ThreadLocalRandom.current().nextInt(1, loadValues.size()); // Getting random index number, for random pick from Excel data file

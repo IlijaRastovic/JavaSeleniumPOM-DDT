@@ -3,12 +3,12 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutOverviewPage {
 
+    // Keeping the track of what Web Elements we used
     WebDriver driver;
     WebElement finishButton;
     WebElement cancelButton;
@@ -18,10 +18,11 @@ public class CheckoutOverviewPage {
     List<String> listOfCheckoutItemsTitles;
     List<WebElement> itemList;
 
+    // Initialize WebDriver instance for CheckoutOverviewPage
     public CheckoutOverviewPage(WebDriver driver) {
         this.driver = driver;
     }
-
+    // Locators for WebElements
     public WebElement getFinishButton() {
         return driver.findElement(By.id("finish")) ;
     }
@@ -49,17 +50,17 @@ public class CheckoutOverviewPage {
     public List<String> getListOfCheckoutItemsTitles() {
         List<String> titles = new ArrayList<>();
 
+        // Iterate through all CheckoutOverviewPage items and extract titles
         for (WebElement item : getItemList()) {
             String title = item.findElement(By.className("inventory_item_name")).getText();
             titles.add(title);
         }
-        System.out.println(titles);
-
         return titles;
     }
 
     //-----------------------------------------------------------------
 
+    // Methods that are used in tests
     public void clickFinishButton() {
         getFinishButton().click();
     }

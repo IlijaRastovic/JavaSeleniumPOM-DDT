@@ -3,11 +3,8 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +12,7 @@ import java.util.Set;
 
 public class ItemPage {
 
+    // Keeping the track of what Web Elements we used
     WebDriver driver;
     WebDriverWait wait;
     String actualUrl;
@@ -30,11 +28,11 @@ public class ItemPage {
     WebElement cartBadge;
     List<WebElement> addToCartButtons;
 
-
+    // Initialize WebDriver instance for ItemPage
     public ItemPage(WebDriver driver) {
         this.driver = driver;
     }
-
+    // Locators for WebElements
     public String getActualUrl() {
         return driver.getCurrentUrl();
     }
@@ -84,6 +82,7 @@ public class ItemPage {
     }
     //-----------------------------------------------------------------------------------------------------
 
+    // Methods that are or will be used in tests
     public boolean checkIfAllItemsAreShown(){
         for (WebElement img : getItemsImg()) {
             if(!img.isDisplayed()){
@@ -91,10 +90,9 @@ public class ItemPage {
             }
        }
         return true;
-        //System.out.println(getItemsImg().size());   // Checking that all of the items are added to list
     }
 
-    public boolean checkIfAllItemsShownAreDifferen(){
+    public boolean checkIfAllItemsShownAreDifferent(){
         Set<String> uniqueItems = new HashSet<String>();
         for (WebElement img : getItemsImg()) {
             String dataTest = img.getAttribute("data-test");
@@ -132,13 +130,15 @@ public class ItemPage {
         getCart().click();
     }
 
-    public void checkAddToCartBtnListSize(){ // Helper method to check if locator is getting all  the buttons
+    // Helper method to check if locator is getting all  the buttons
+    public void checkAddToCartBtnListSize(){
         System.out.println(getAddToCartButtons().size());
     }
 
     public void clickOnMultipleAddToCartButton(int quantity) throws IllegalAccessException {
 
-        List<WebElement> listOfButtons = getAddToCartButtons(); // Adding all the buttons in unique list before the for loop, because after the click, buttons changes its data-test atribute
+        // Adding all the buttons in unique list before the for loop, because after the click, buttons changes its data-test attribute
+        List<WebElement> listOfButtons = getAddToCartButtons();
 
         if(quantity > listOfButtons.size()){
             throw new IllegalAccessException("Size of the list is smaller then the passed number!");

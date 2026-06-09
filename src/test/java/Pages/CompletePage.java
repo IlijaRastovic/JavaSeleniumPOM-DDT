@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class CompletePage {
 
+    // Keeping the track of what Web Elements we used
     WebDriver driver;
     WebElement thankYouMessage;
     WebElement backHomeButton;
@@ -13,11 +14,11 @@ public class CompletePage {
     WebElement pageTitle;
 
 
-
+    // Initialize WebDriver instance for CheckoutPage
     public CompletePage(WebDriver driver) {
         this.driver = driver;
     }
-
+    // Locators for WebElements
     public WebElement getThankYouMessage() {
         return driver.findElement(By.className("complete-header"));
     }

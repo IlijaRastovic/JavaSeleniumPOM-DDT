@@ -3,12 +3,12 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage {
 
+    // Keeping the track of what Web Elements we used
     WebDriver driver;
     WebElement continueShoppingButton;
     WebElement checkoutButton;
@@ -18,11 +18,11 @@ public class CartPage {
     List<WebElement> listOfRemoveItemsButtons;
     List<String> listOfCartItemsTitles;
 
-
+    // Initialize WebDriver instance for CartPage
     public CartPage(WebDriver driver) {
         this.driver = driver;
     }
-
+    // Locators for WebElements
     public WebElement getContinueShoppingButton() {
         return driver.findElement(By.id("continue-shopping")) ;
     }
@@ -36,7 +36,7 @@ public class CartPage {
     }
 
     public WebElement getRemoveItemButton() {
-        return driver.findElement(By.id("remove-sauce-labs-backpack")); //Every item has its own remove button, i will later get all the buttons with a list
+        return driver.findElement(By.id("remove-sauce-labs-backpack"));
     }
 
     public List<WebElement> getListOfItems() {
@@ -44,31 +44,33 @@ public class CartPage {
     }
 
     public List<WebElement> getListOfRemoveItemsButtons() {
+        // Locate and return all "Remove" buttons using partial attribute match
         return driver.findElements(By.cssSelector("button[data-test^='remove']"));
     }
 
     public List<String> getListOfCartItemsTitles() {
         List<String> titles = new ArrayList<>();
 
+        // Iterate through all cart items and extract product names
         for (WebElement item : getListOfItems()) {
             String title = item.findElement(By.className("inventory_item_name")).getText();
             titles.add(title);
         }
-
         return titles;
     }
 
     //-------------------------------------------------------------------------
 
+    // Methods that are or will be used in tests
     public void clickCheckoutButton(){
         getCheckoutButton().click();
     }
 
-    public int sizeOdItemList(){ // To check if this method is working correctly
+    public int sizeOfItemList(){
         return getListOfItems().size();
     }
-
-    public void checkRemoveButtonListSize(){ // Helper method to check if locator is getting all of the buttons
+    // Helper method to check if locator is getting all the buttons
+    public void checkRemoveButtonListSize(){
         System.out.println(getListOfRemoveItemsButtons().size());
     }
 

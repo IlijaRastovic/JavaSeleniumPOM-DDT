@@ -1,14 +1,14 @@
 package Pages;
 
-import Base.ExcelHelper;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class LoginPage {
+
+    // Keeping the track of what Web Elements we used
     WebDriver driver;
     WebElement usernameField;
     WebElement passwordField;
@@ -17,7 +17,7 @@ public class LoginPage {
     String actualUrl;
     WebElement errorBadge;
 
-
+    // Initialize WebDriver instance for LoginPage
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -47,8 +47,8 @@ public class LoginPage {
     }
 
     //-----------------------------------------------------
-
-    public void userLogin() { // Later will add method using cookies
+    // Methods that are or will be used in tests
+    public void userLogin() {
         clearFields();
         getUsernameField().sendKeys("standard_user");
         getPasswordField().sendKeys("secret_sauce");
